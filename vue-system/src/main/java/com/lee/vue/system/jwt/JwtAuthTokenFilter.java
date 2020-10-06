@@ -35,12 +35,12 @@ public class JwtAuthTokenFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws ServletException, IOException {
-
-        /*// 从这里开始获取 request 中的 jwt token
+        // 从这里开始获取 request 中的 jwt token
         String authHeader = request.getHeader(jwtTokenUtil.getHeader());
         log.info("authHeader：{}", authHeader);
         // 验证token是否存在
         if (authHeader != null && StringUtils.isNotEmpty(authHeader)) {
+            authHeader = authHeader.replace(jwtTokenUtil.getTokenHead()+" ","");
             // 根据token 获取用户名
             String username = jwtTokenUtil.getUsernameFromToken(authHeader);
             if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
@@ -56,7 +56,7 @@ public class JwtAuthTokenFilter extends OncePerRequestFilter {
                     SecurityContextHolder.getContext().setAuthentication(authentication);
                 }
             }
-        }*/
+        }
         chain.doFilter(request, response);
     }
 }

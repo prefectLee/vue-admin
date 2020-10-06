@@ -5,6 +5,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -18,11 +19,18 @@ import java.util.Map;
 @ConfigurationProperties(prefix = "jwt")
 @Component
 public class JwtTokenUtil implements Serializable {
+
+    @Value("${jwt.secret}")
     private String secret;
 
+    @Value("${jwt.expiration}")
     private Long expiration;
 
+    @Value("${jwt.header}")
     private String header;
+
+    @Value("${jwt.tokenHead}")
+    private String tokenHead;
 
     /**
      * 从数据声明生成令牌
