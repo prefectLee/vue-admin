@@ -38,7 +38,7 @@ public class JwtUserDetailServiceImpl implements UserDetailsService {
             List<SimpleGrantedAuthority> collect = new ArrayList<>();
             collect.add(new SimpleGrantedAuthority("admin"));
             //List<SimpleGrantedAuthority> collect = user.getRoles().stream().map(SysRole::getName).map(SimpleGrantedAuthority::new).collect(Collectors.toList());
-            return new JwtUser(user.getUserName(), user.getPassword(), user.getEnabled(), collect);
+            return new JwtUser(user.getId(), user.getUserName(), user.getPassword(), user.getEnabled(), collect);
         }
 
     }

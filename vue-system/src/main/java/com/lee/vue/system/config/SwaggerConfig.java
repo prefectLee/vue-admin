@@ -29,9 +29,9 @@ public class SwaggerConfig {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 //页面标题
-                .title("Spring Boot 集成Swagger2")
+                .title("vue admin api")
                 //作者的相关信息
-                .contact(new Contact("Vector丶", "https://www.baidu.com", "test@qq.com"))
+                .contact(new Contact("lee", "https://www.baidu.com", "test@qq.com"))
                 //版本号
                 .version("1.0")
                 //详细描述

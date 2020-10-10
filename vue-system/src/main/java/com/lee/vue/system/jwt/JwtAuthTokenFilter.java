@@ -40,7 +40,7 @@ public class JwtAuthTokenFilter extends OncePerRequestFilter {
         log.info("authHeader：{}", authHeader);
         // 验证token是否存在
         if (authHeader != null && StringUtils.isNotEmpty(authHeader)) {
-            authHeader = authHeader.replace(jwtTokenUtil.getTokenHead()+" ","");
+            authHeader = authHeader.replace(jwtTokenUtil.getTokenHead(),"");
             // 根据token 获取用户名
             String username = jwtTokenUtil.getUsernameFromToken(authHeader);
             if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {

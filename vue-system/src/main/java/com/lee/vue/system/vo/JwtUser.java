@@ -1,11 +1,15 @@
 package com.lee.vue.system.vo;
 
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
+@Data
 public class JwtUser implements UserDetails {
+
+    private String id;
 
     private String username;
 
@@ -15,10 +19,8 @@ public class JwtUser implements UserDetails {
 
     private Collection<? extends GrantedAuthority> authorities;
 
-    public JwtUser() {
-    }
-
-    public JwtUser(String username, String password, Integer state, Collection<? extends GrantedAuthority> authorities) {
+    public JwtUser(String id, String username, String password, Integer state, Collection<? extends GrantedAuthority> authorities) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.state = state;
