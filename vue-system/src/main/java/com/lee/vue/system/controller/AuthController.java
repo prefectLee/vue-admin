@@ -1,6 +1,7 @@
 package com.lee.vue.system.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.lee.vue.system.constant.TestConstant;
 import com.lee.vue.system.entity.User;
 import com.lee.vue.system.mapper.UserMapper;
@@ -71,7 +72,10 @@ public class AuthController {
         //return Result.success("登录成功", tokenValue);
 
         //return Result.success("登录成功", user);
-        return JSON.parse(TestConstant.LOGIN_INFO);
+        JSONObject loginInfo = JSON.parseObject(TestConstant.LOGIN_INFO);
+        JSONObject resultInfo = (JSONObject) loginInfo.get("result");
+        resultInfo.put("token",token);
+        return loginInfo;
     }
 
     @GetMapping("/refreshToken")
