@@ -15,7 +15,7 @@ public class User {
     @TableId(type= IdType.AUTO)
     private String id;
 
-    @TableField(value = "named")
+    @TableField(value = "name")
     private String userName;
 
     private String password;
